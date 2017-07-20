@@ -5,21 +5,10 @@ contents = CSV.open "event_attendees.csv", headers: true, header_converters: sym
 contents.each do |row|
   name = row[:first_name]
   zipcode = row[:zipcode]
+
+  # if the zipcode is exactly five digits, assume that it is ok    
+  # if the zipcode is more than 5 digits, truncate it to the first 5 digits
+  # if the zipcode is less than 5 digits, add zeros to the front until it becomes five digits
+  # else zipcode
   puts "#{name} #{zipcode}"
 end
-
-
-
-
-
-
-
-
-
-# lines = File.read "event_attendees.csv"
-# lines.each_with_index do |line, index|
-#   next if row_index == 1
-#   columns = line.split(",")
-#   name = columns[2]
-#   puts name
-# end
